@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Silent School</string>
+
+    <!--root screen-->
+    <string name="stand_and_survive">Встал и выжил!</string>
+    <string name="start_reading">Приятного чтения</string>
+    <string name="repeat_reading">Начать сначала</string>
+    <string name="restore_state">Восстановить состояние</string>
+    <string name="reading_rules">Правила игры</string>
+    <string name="share">Рассказать</string>
+    <string name="about_stories">Об этой истории</string>
+</resources>
