@@ -8,5 +8,5 @@
     <string name="restore_state">Восстановить состояние</string>
     <string name="reading_rules">Правила игры</string>
     <string name="share">Рассказать</string>
-    <string name="about_stories">Об этой истории</string>
+    <string name="about">Об этой истории</string>
 </resources>

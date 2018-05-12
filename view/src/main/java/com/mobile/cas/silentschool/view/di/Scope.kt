@@ -1,4 +1,4 @@
-package com.mobile.cas.silentschool.app.di
+package com.mobile.cas.silentschool.view.di
 
 import javax.inject.Scope
 

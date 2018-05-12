@@ -6,6 +6,12 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.mobile.cas.silentschool.app.MainActivity
 import com.mobile.cas.silentschool.app.RootActivity
+import com.mobile.cas.silentschool.app.utils.ContentManagerImpl
+import com.mobile.cas.silentschool.app.utils.StateManagerImpl
+import com.mobile.cas.silentschool.view.di.PerActivity
+import com.mobile.cas.silentschool.view.utils.ContentManager
+import com.mobile.cas.silentschool.view.utils.ResourceProvider
+import com.mobile.cas.silentschool.view.utils.StateManager
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -34,7 +40,25 @@ abstract class AppModule {
         @Singleton
         @JvmStatic
         @Provides
+        internal fun provideResourceProvider(context: Application): ResourceProvider = ResourceProvider(context)
+
+        @Singleton
+        @JvmStatic
+        @Provides
         internal fun provideSharedPreferences(context: Context): SharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(context)
+
+        @Singleton
+        @JvmStatic
+        @Provides
+        internal fun provideStateManager(sharedPreferences: SharedPreferences): StateManager =
+                StateManagerImpl(sharedPreferences)
+
+        @Singleton
+        @JvmStatic
+        @Provides
+        internal fun provideContentManager(sharedPreferences: SharedPreferences,
+                                           provider: ResourceProvider): ContentManager =
+                ContentManagerImpl(sharedPreferences, provider)
     }
 }

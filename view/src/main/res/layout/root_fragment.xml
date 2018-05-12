@@ -1,55 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
+        <include
+            android:id="@+id/start"
+            layout="@layout/menu_widget"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
+            android:layout_marginLeft="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_middle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline_vertical_middle"
+            app:layout_constraintTop_toTopOf="@+id/guideline_top"
+            bind:title="@{@string/start_reading}"
+            tools:ignore="RtlHardcoded" />
+
+        <include
+            android:id="@+id/restart"
+            layout="@layout/menu_widget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_middle"
+            app:layout_constraintLeft_toRightOf="@+id/guideline_vertical_middle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_top"
+            bind:title="@{@string/repeat_reading}"
+            tools:ignore="RtlHardcoded" />
+
+        <include
+            android:id="@+id/ad_block"
+            layout="@layout/menu_widget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline_right"
+            app:layout_constraintTop_toTopOf="@+id/guideline_middle"
+            tools:ignore="RtlHardcoded" />
+
+        <include
+            android:id="@+id/rules"
+            layout="@layout/menu_widget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/standard_margin"
+            android:layout_marginLeft="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/guideline_left"
+            app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
+            bind:title="@{@string/reading_rules}"
+            tools:ignore="RtlHardcoded" />
+
+        <include
+            android:id="@+id/about"
+            layout="@layout/menu_widget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
             app:layout_constraintRight_toRightOf="@+id/guideline_right"
-            app:layout_constraintTop_toTopOf="@+id/guideline_top">
+            app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
+            bind:title="@{@string/about}"
+            tools:ignore="RtlHardcoded" />
 
-            <include
-                android:id="@+id/main_menu"
-                layout="@layout/menu_widget"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
+        <include
+            android:id="@+id/share"
+            layout="@layout/menu_widget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guideline_right"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_middle"
+            bind:title="@{@string/share}"
+            tools:ignore="RtlHardcoded" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_vertical_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.7" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.75" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

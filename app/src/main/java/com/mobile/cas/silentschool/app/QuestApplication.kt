@@ -17,7 +17,10 @@ class QuestApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.create()
+        DaggerAppComponent
+                .builder()
+                .application(this)
+                .build()
                 .inject(this);
     }
 }
