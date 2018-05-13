@@ -1,5 +1,7 @@
 package com.mobile.cas.silentschool.view.di
 
+import com.mobile.cas.silentschool.view.ui.root.RootRouter
+import com.mobile.cas.silentschool.view.ui.root.RootRouterImpl
 import com.mobile.cas.silentschool.view.ui.root.RootVM
 import com.mobile.cas.silentschool.view.ui.rules.RulesVM
 import com.mobile.cas.silentschool.view.utils.ContentManager
@@ -16,11 +18,7 @@ abstract class FragmentModule {
     companion object {
         @JvmStatic
         @Provides
-        internal fun provideRootVM(stateManager: StateManager): RootVM = RootVM(stateManager)
-
-        @JvmStatic
-        @Provides
-        internal fun provideRulesVM(contentManager: ContentManager): RulesVM = RulesVM(contentManager)
+        internal fun provideRootRouter(): RootRouterImpl = RootRouterImpl()
 
         @JvmStatic
         @Provides

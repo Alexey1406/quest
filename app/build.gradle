@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+// Wait stable channel
+/*apply plugin: 'androidx.navigation.safeargs'*/
 
 android {
     compileSdkVersion 27
@@ -30,7 +32,7 @@ dependencies {
     api project(':quest')
     api project(':view')
 
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     //dagger
     implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"

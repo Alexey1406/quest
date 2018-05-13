@@ -5,8 +5,10 @@ import android.view.View
 import com.mobile.cas.silentschool.R
 import com.mobile.cas.silentschool.databinding.RulesFragmentBinding
 import com.mobile.cas.silentschool.view.ui.base.BaseFragment
+import com.mobile.cas.silentschool.view.ui.root.RootRouter
+import com.mobile.cas.silentschool.view.ui.root.RootRouterImpl
 
-class RulesFragment : BaseFragment<RulesVM, RulesFragmentBinding>() {
+class RulesFragment : BaseFragment<RulesVM, RulesFragmentBinding, RootRouterImpl>() {
 
     override fun getViewModelClass(): Class<RulesVM> = RulesVM::class.java
 
