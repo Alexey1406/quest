@@ -5,6 +5,14 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mobile.cas.silentschool.view.ui.root.RootVM" />
+
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +27,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@+id/guideline_vertical_middle"
             app:layout_constraintTop_toTopOf="@+id/guideline_top"
+            bind:action="@{viewModel.startReading}"
             bind:title="@{@string/start_reading}"
             tools:ignore="RtlHardcoded" />
 

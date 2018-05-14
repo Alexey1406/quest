@@ -18,6 +18,7 @@ buildscript {
 }
 
 project.ext{
+    kotlinReflectVersion = "1.2.31"
     androidSupportVersion = "27.1.1"
     androidPlayServicesAdsVersion = "15.0.1"
     lifecycleVersion = "1.1.1"

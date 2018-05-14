@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mobile.cas.silentschool.view.vm.ContentVM" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/middle_margin"
+        android:paddingLeft="@dimen/middle_margin"
+        android:paddingRight="@dimen/middle_margin"
+        android:paddingTop="@dimen/middle_margin">
+
+        <TextView
+            android:id="@+id/seller_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{viewModel.content}"
+            tools:text="Иван Иванович " />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

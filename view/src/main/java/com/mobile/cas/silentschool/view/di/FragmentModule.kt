@@ -1,5 +1,8 @@
 package com.mobile.cas.silentschool.view.di
 
+import com.mobile.cas.silentschool.view.router.BaseRouterImpl
+import com.mobile.cas.silentschool.view.ui.page.PageRouterImpl
+import com.mobile.cas.silentschool.view.ui.page.PageVM
 import com.mobile.cas.silentschool.view.ui.root.RootRouter
 import com.mobile.cas.silentschool.view.ui.root.RootRouterImpl
 import com.mobile.cas.silentschool.view.ui.root.RootVM
@@ -22,7 +25,19 @@ abstract class FragmentModule {
 
         @JvmStatic
         @Provides
+        internal fun providePageRootRouter(): PageRouterImpl = PageRouterImpl()
+
+        @JvmStatic
+        @Provides
+        internal fun provideBaseRouterImpl(): BaseRouterImpl = BaseRouterImpl()
+
+        @JvmStatic
+        @Provides
         internal fun provideRootVMFactory(stateManager: StateManager): CustomFactory<RootVM> = CustomFactory({ RootVM(stateManager) })
+
+        @JvmStatic
+        @Provides
+        internal fun providePageVMFactory(contentManager: ContentManager): CustomFactory<PageVM> = CustomFactory({ PageVM(contentManager) })
 
         @JvmStatic
         @Provides

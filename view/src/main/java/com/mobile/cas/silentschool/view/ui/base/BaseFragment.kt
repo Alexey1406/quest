@@ -21,7 +21,7 @@ import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-abstract class BaseFragment<VIEW_MODEL : RoutingVM, BINDING : ViewDataBinding, ROUTER : FragmentRouter>
+abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBinding, ROUTER : FragmentRouter>
     : Fragment(), HasSupportFragmentInjector {
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = childFragmentInjector
@@ -35,7 +35,7 @@ abstract class BaseFragment<VIEW_MODEL : RoutingVM, BINDING : ViewDataBinding, R
     @Inject
     lateinit var router: ROUTER
 
-    private var viewDataBinding: ViewDataBinding? = null
+    private var viewDataBinding: BINDING? = null
 
     private var vm: VIEW_MODEL? = null
 
@@ -57,10 +57,13 @@ abstract class BaseFragment<VIEW_MODEL : RoutingVM, BINDING : ViewDataBinding, R
         if (!getDataBinding().setVariable(BR.viewModel, vm)) {
             throw RuntimeException("Layout XML resource should contain data variable with name=\"viewModel\"")
         }
+        initViews()
         return getDataBinding().root
     }
 
-    protected fun getDataBinding(): ViewDataBinding {
+    protected open fun initViews() {}
+
+    protected fun getDataBinding(): BINDING {
         return viewDataBinding!!
     }
 

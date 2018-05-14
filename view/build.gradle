@@ -34,6 +34,7 @@ dependencies {
 
     kapt "com.android.databinding:compiler:$rootProject.ext.databindingCompilerVersion"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    api "org.jetbrains.kotlin:kotlin-reflect:$rootProject.ext.kotlinReflectVersion"
     // Arch Components, use -ktx for Kotlin
     api "android.arch.lifecycle:extensions:$rootProject.ext.lifecycleVersion"
     // Wait stable channel
