@@ -1,4 +1,4 @@
-package com.mobile.cas.silentschool.app.data
+package com.mobile.cas.school.data
 
 class Character(
         lifeCount: Int = 30,

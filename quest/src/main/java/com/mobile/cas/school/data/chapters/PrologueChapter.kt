@@ -1,8 +1,8 @@
-package com.mobile.cas.silentschool.app.data.chapters
+package com.mobile.cas.school.data.chapters
 
-import com.mobile.cas.silentschool.app.R
-import com.mobile.cas.silentschool.app.data.BaseChapter
-import com.mobile.cas.silentschool.app.data.Page
+import com.mobile.cas.school.R
+import com.mobile.cas.school.data.BaseChapter
+import com.mobile.cas.school.data.Page
 
 class PrologueChapter() : BaseChapter(R.string.prologue) {
 

@@ -1,4 +1,4 @@
-package com.mobile.cas.quiz_scenario.data
+package com.mobile.cas.school.data
 
 import android.support.annotation.ArrayRes
 import android.support.annotation.StringRes

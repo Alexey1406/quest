@@ -12,7 +12,7 @@ interface RootRouter {
 
 public class RootRouterImpl : RootRouter, BaseRouterImpl() {
     override fun startReading() {
-        showFragment(PageFragment::class.java.name,
+        showFragment(PageFragment::class.java.simpleName,
                 { PageFragment() })
     }
 

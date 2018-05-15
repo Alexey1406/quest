@@ -1,4 +1,4 @@
-package com.mobile.cas.quiz_scenario;
+package com.mobile.cas.school;
 
 import org.junit.Test;
 

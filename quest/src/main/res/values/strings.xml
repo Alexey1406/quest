@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">quiz_scenario</string>
+
+    <string name="default_next_passage">Далее</string>
 </resources>

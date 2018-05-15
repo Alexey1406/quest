@@ -1,4 +1,4 @@
-package com.mobile.cas.silentschool.app.data
+package com.mobile.cas.school.data
 
 class Scenario(val currentPage: Int = 0) {
 
