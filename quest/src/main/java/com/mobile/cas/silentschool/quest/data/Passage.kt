@@ -1,4 +1,4 @@
-package com.mobile.cas.school.data
+package com.mobile.cas.silentschool.quest.data
 
 import android.support.annotation.StringRes
 

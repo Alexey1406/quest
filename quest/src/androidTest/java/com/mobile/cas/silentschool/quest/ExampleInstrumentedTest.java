@@ -1,4 +1,4 @@
-package com.mobile.cas.school;
+package com.mobile.cas.silentschool;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

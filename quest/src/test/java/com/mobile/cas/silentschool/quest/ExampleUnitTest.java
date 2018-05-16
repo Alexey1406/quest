@@ -1,4 +1,4 @@
-package com.mobile.cas.school;
+package com.mobile.cas.silentschool;
 
 import org.junit.Test;
 

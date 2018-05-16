@@ -1,6 +1,5 @@
 package com.mobile.cas.silentschool.view.ui.base
 
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -13,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.mobile.cas.silentschool.BR
 import com.mobile.cas.silentschool.view.router.FragmentRouter
-import com.mobile.cas.silentschool.view.router.Router
 import com.mobile.cas.silentschool.view.utils.CustomFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -46,10 +44,12 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        router.attachContext(this, fragmentManager!!)
         vm = ViewModelProviders.of(activity!!, factoryInjector).get(getViewModelClass())
+        router.attachContext(this, fragmentManager!!)
         lifecycle.addObserver(router)
         getViewModel().router = router
+        extractInitialArguments(arguments)
+        getViewModel().initialize()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -60,6 +60,8 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
         initViews()
         return getDataBinding().root
     }
+
+    protected open fun extractInitialArguments(arguments: Bundle?){}
 
     protected open fun initViews() {}
 
