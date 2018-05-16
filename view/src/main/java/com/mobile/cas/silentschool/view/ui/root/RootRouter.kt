@@ -1,5 +1,10 @@
 package com.mobile.cas.silentschool.view.ui.root;
 
+import android.graphics.Rect
+import android.support.transition.Explode
+import android.support.transition.Transition
+import android.support.transition.TransitionManager
+import android.view.ViewGroup
 import com.mobile.cas.silentschool.view.router.BaseRouterImpl
 import com.mobile.cas.silentschool.view.ui.page.PageFragment
 

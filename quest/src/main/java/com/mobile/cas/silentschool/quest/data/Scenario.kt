@@ -6,6 +6,10 @@ import com.mobile.cas.silentschool.quest.data.chapters.base.Chapter
 
 class Scenario(val currentChapter: Int = 0, val currentPage: Int = 0) {
 
+    init {
+        buildScenario()
+    }
+
     private fun buildScenario(): List<Chapter> {
         val scenario = mutableListOf<Chapter>()
         scenario.add(PrologueChapter())

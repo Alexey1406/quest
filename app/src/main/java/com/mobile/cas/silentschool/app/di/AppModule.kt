@@ -8,6 +8,7 @@ import com.mobile.cas.silentschool.app.MainActivity
 import com.mobile.cas.silentschool.app.RootActivity
 import com.mobile.cas.silentschool.app.utils.ContentManagerImpl
 import com.mobile.cas.silentschool.app.utils.StateManagerImpl
+import com.mobile.cas.silentschool.quest.data.Scenario
 import com.mobile.cas.silentschool.view.di.PerActivity
 import com.mobile.cas.silentschool.view.utils.ContentManager
 import com.mobile.cas.silentschool.view.utils.ResourceProvider
@@ -57,8 +58,13 @@ abstract class AppModule {
         @Singleton
         @JvmStatic
         @Provides
-        internal fun provideContentManager(sharedPreferences: SharedPreferences,
+        internal fun provideContentManager(scenario: Scenario,
                                            provider: ResourceProvider): ContentManager =
-                ContentManagerImpl(sharedPreferences, provider)
+                ContentManagerImpl(scenario, provider)
+
+        @Singleton
+        @JvmStatic
+        @Provides
+        internal fun provideScenario(): Scenario = Scenario(0, 0)
     }
 }

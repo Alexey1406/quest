@@ -9,7 +9,7 @@ class FirstChapter : BaseChapter(R.string.chapter_caption_01) {
     override var pages: List<Page> = buildChapter()
 
     private fun buildChapter(): List<Page> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return emptyList<Page>()
     }
 
     /*override val pages: List<Page> = mutableListOf(
