@@ -4,8 +4,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.transition.Explode
+import android.support.transition.Transition
+import android.support.transition.TransitionListenerAdapter
+import android.support.transition.TransitionManager
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +66,7 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
         return getDataBinding().root
     }
 
-    protected open fun extractInitialArguments(arguments: Bundle?){}
+    protected open fun extractInitialArguments(arguments: Bundle?) {}
 
     protected open fun initViews() {}
 
@@ -80,4 +85,23 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    // Run navigation with explode transition with epicenter
+    protected fun routWithExplode(view: View, parent: ViewGroup, routAction: () -> Unit) {
+        val viewRect = Rect()
+        view.getGlobalVisibleRect(viewRect)
+        val explode = Explode()
+        explode.epicenterCallback = object : Transition.EpicenterCallback() {
+            override fun onGetEpicenter(transition: Transition): Rect {
+                return viewRect
+            }
+        }
+        explode.addListener(object : TransitionListenerAdapter() {
+            override fun onTransitionEnd(transition: Transition) {
+                routAction.invoke()
+            }
+        })
+        TransitionManager.beginDelayedTransition(parent, explode)
+        parent.removeAllViews()
+    }
 }

@@ -2,6 +2,7 @@ package com.mobile.cas.silentschool.view.router
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.view.View
 import com.mobile.cas.silentschool.R
 
 interface BaseRouter {
@@ -34,10 +35,15 @@ open class BaseRouterImpl : BaseRouter, FragmentRouter() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    protected fun showFragment(tag: String, getInstanceAction: () -> Fragment) {
+    protected fun showFragment(tag: String,
+                               getInstanceAction: () -> Fragment,
+                               sharedTransaction: Pair<View, String>? = null) {
         runStickyTransaction(object : Action<Fragment> {
             override fun invoke(context_provider: Fragment, fragmentManager: FragmentManager) {
                 var transaction = fragmentManager.beginTransaction()
+                sharedTransaction?.let {
+                    transaction.addSharedElement(sharedTransaction.first, sharedTransaction.second)
+                }
                 fragmentManager.fragments.filter { it.tag != tag }.forEach {
                     transaction = transaction.hide(it)
                 }

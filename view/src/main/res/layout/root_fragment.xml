@@ -26,9 +26,10 @@
             android:layout_marginLeft="@dimen/standard_margin"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_middle"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@+id/guideline_vertical_middle"
+            app:layout_constraintRight_toLeftOf="@+id/restart"
             app:layout_constraintTop_toTopOf="@+id/guideline_top"
-            bind:action="@{viewModel.startReading}"
+            bind:action="@{viewModel.navigation}"
+            bind:id="@{@id/start}"
             bind:title="@{@string/start_reading}"
             tools:ignore="RtlHardcoded" />
 
@@ -42,6 +43,8 @@
             app:layout_constraintLeft_toRightOf="@+id/guideline_vertical_middle"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline_top"
+            bind:action="@{viewModel.navigation}"
+            bind:id="@{@id/restart}"
             bind:title="@{@string/repeat_reading}"
             tools:ignore="RtlHardcoded" />
 
@@ -55,6 +58,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@+id/guideline_right"
             app:layout_constraintTop_toTopOf="@+id/guideline_middle"
+            bind:id="@{@id/ad_block}"
             tools:ignore="RtlHardcoded" />
 
         <include
@@ -68,6 +72,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@+id/guideline_left"
             app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
+            bind:id="@{@id/rules}"
             bind:title="@{@string/reading_rules}"
             tools:ignore="RtlHardcoded" />
 
@@ -81,6 +86,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
             app:layout_constraintRight_toRightOf="@+id/guideline_right"
             app:layout_constraintTop_toTopOf="@+id/guideline_bottom"
+            bind:id="@{@id/about}"
             bind:title="@{@string/about}"
             tools:ignore="RtlHardcoded" />
 
@@ -95,6 +101,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/guideline_right"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline_middle"
+            bind:id="@{@id/share}"
             bind:title="@{@string/share}"
             tools:ignore="RtlHardcoded" />
 

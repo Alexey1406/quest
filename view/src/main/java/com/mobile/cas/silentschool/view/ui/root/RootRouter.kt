@@ -1,24 +1,22 @@
 package com.mobile.cas.silentschool.view.ui.root;
 
-import android.graphics.Rect
-import android.support.transition.Explode
-import android.support.transition.Transition
-import android.support.transition.TransitionManager
-import android.view.ViewGroup
+import android.view.View
 import com.mobile.cas.silentschool.view.router.BaseRouterImpl
 import com.mobile.cas.silentschool.view.ui.page.PageFragment
 
 interface RootRouter {
 
-    fun startReading()
+    fun startReading(shared: Pair<View, String>? = null)
 
     fun showRules()
 }
 
-public class RootRouterImpl : RootRouter, BaseRouterImpl() {
-    override fun startReading() {
-        showFragment(PageFragment::class.java.simpleName,
-                { PageFragment() })
+class RootRouterImpl : RootRouter, BaseRouterImpl() {
+    override fun startReading(shared: Pair<View, String>?) {
+        showFragment(
+                PageFragment::class.java.simpleName,
+                { PageFragment() },
+                shared)
     }
 
     override fun showRules() {
