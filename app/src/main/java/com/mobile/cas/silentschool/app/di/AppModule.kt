@@ -52,6 +52,11 @@ abstract class AppModule {
         @Singleton
         @JvmStatic
         @Provides
+        internal fun provideScenario(): Scenario = Scenario(0, 0)
+
+        @Singleton
+        @JvmStatic
+        @Provides
         internal fun provideStateManager(sharedPreferences: SharedPreferences): StateManager =
                 StateManagerImpl(sharedPreferences)
 
@@ -61,10 +66,5 @@ abstract class AppModule {
         internal fun provideContentManager(scenario: Scenario,
                                            provider: ResourceProvider): ContentManager =
                 ContentManagerImpl(scenario, provider)
-
-        @Singleton
-        @JvmStatic
-        @Provides
-        internal fun provideScenario(): Scenario = Scenario(0, 0)
     }
 }

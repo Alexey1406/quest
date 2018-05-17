@@ -37,10 +37,8 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
 
     @Inject
     lateinit var router: ROUTER
-
-    private var viewDataBinding: BINDING? = null
-
-    private var vm: VIEW_MODEL? = null
+    lateinit var vm: VIEW_MODEL
+    lateinit var dataBinding: BINDING
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -52,34 +50,23 @@ abstract class BaseFragment<VIEW_MODEL : BaseVM<ROUTER>, BINDING : ViewDataBindi
         vm = ViewModelProviders.of(activity!!, factoryInjector).get(getViewModelClass())
         router.attachContext(this, fragmentManager!!)
         lifecycle.addObserver(router)
-        getViewModel().router = router
+        vm.router = router
         extractInitialArguments(arguments)
-        getViewModel().initialize()
+        vm.initialize()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewDataBinding = DataBindingUtil.inflate<BINDING>(inflater, getLayoutId(), container, false)
-        if (!getDataBinding().setVariable(BR.viewModel, vm)) {
+        dataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        if (!dataBinding.setVariable(BR.viewModel, vm)) {
             throw RuntimeException("Layout XML resource should contain data variable with name=\"viewModel\"")
         }
         initViews()
-        return getDataBinding().root
+        return dataBinding.root
     }
 
     protected open fun extractInitialArguments(arguments: Bundle?) {}
 
     protected open fun initViews() {}
-
-    protected fun getDataBinding(): BINDING {
-        return viewDataBinding!!
-    }
-
-    protected fun getViewModel(): VIEW_MODEL {
-        if (vm == null) {
-            throw NullPointerException("ViewModel did not create")
-        }
-        return vm!!
-    }
 
     abstract fun getViewModelClass(): Class<VIEW_MODEL>
 

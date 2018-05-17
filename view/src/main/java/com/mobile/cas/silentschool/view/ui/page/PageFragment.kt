@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.mobile.cas.silentschool.R
 import com.mobile.cas.silentschool.databinding.PageFragmentBinding
+import com.mobile.cas.silentschool.quest.data.Bookmark
 import com.mobile.cas.silentschool.view.ui.base.BaseFragment
 import com.mobile.cas.silentschool.view.ui.base.ViewModelAdapter
 import com.mobile.cas.silentschool.view.vm.ContentVM
@@ -21,7 +22,7 @@ class PageFragment : BaseFragment<PageVM, PageFragmentBinding, PageRouterImpl>()
 
     override fun initViews() {
         super.initViews()
-        recyclerView = getDataBinding().list
+        recyclerView = dataBinding.list
         adapter.registerCells(::registerCells)
 
         recyclerView.setHasFixedSize(true)
@@ -39,18 +40,18 @@ class PageFragment : BaseFragment<PageVM, PageFragmentBinding, PageRouterImpl>()
 
     override fun extractInitialArguments(arguments: Bundle?) {
         arguments?.let {
-            getViewModel().pageId = arguments.getInt(ARG_PAGE_ID)
+            vm.bookmark = arguments.getInt(ARG_BOOKMARK)
         }
     }
 
     companion object {
 
-        private const val ARG_PAGE_ID = "ARG_PAGE_ID"
+        private const val ARG_BOOKMARK = "ARG_BOOKMARK"
 
-        fun newInstance(pageId: Int): PageFragment {
+        fun newInstance(bookmark: Bookmark): PageFragment {
             val fragment = PageFragment()
             val args = Bundle().apply {
-                putInt(ARG_PAGE_ID, pageId)
+                putParcelable(ARG_BOOKMARK, bookmark)
             }
             fragment.arguments = args
             return fragment

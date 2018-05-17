@@ -6,7 +6,7 @@ import com.mobile.cas.silentschool.quest.data.page.Page
 import com.mobile.cas.silentschool.quest.data.page.PageAction
 import com.mobile.cas.silentschool.quest.data.page.PageContent
 
-class PrologueChapter : BaseChapter(R.string.prologue) {
+class PrologueChapter : BaseChapter(0, R.string.prologue) {
 
     override var pages: List<Page> = buildChapter()
 

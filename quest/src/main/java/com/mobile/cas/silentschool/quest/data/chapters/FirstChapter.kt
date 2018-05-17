@@ -4,7 +4,7 @@ import com.mobile.cas.silentschool.quest.R
 import com.mobile.cas.silentschool.quest.data.chapters.base.BaseChapter
 import com.mobile.cas.silentschool.quest.data.page.Page
 
-class FirstChapter : BaseChapter(R.string.chapter_caption_01) {
+class FirstChapter : BaseChapter(1, R.string.chapter_caption_01) {
 
     override var pages: List<Page> = buildChapter()
 

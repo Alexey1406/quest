@@ -14,7 +14,7 @@ interface Chapter {
     fun getAllPages(): List<Page>
 }
 
-abstract class BaseChapter(@StringRes private val name: Int) : Chapter {
+abstract class BaseChapter(val id: Int, @StringRes private val name: Int) : Chapter {
 
     protected abstract var pages: List<Page>
 
